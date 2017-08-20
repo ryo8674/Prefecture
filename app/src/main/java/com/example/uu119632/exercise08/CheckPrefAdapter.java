@@ -1,4 +1,4 @@
-package com.example.peter.prefectures;
+package com.example.uu119632.exercise08;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,34 +9,37 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * CheckPrefAdapter
  * チェックボックス画面用CustomAdapter
+ *
  * @author :ryo.yamada
  * @since :1.0 :2017/07/28
  */
 
-public class CheckPrefAdapter extends ArrayAdapter<Prefecture> {
+class CheckPrefAdapter extends ArrayAdapter<Prefecture> {
 
-    /** 都道府県のリスト */
+    /**
+     * 都道府県のリスト
+     */
     List<Prefecture> list;
-    /** LayoutInflater */
+    /**
+     * LayoutInflater
+     */
     private LayoutInflater layoutInflater;
 
     /**
      * コンストラクタ
-     * @param context クラスのオブジェクト
+     *
+     * @param context    クラスのオブジェクト
      * @param resourceId リソースID
-     * @param list データのリスト
+     * @param list       データのリスト
      */
-    public CheckPrefAdapter(Context context, int resourceId, List<Prefecture> list) {
+    CheckPrefAdapter(Context context, int resourceId, List<Prefecture> list) {
         super(context, resourceId, list);
-        this.list = new ArrayList<>();
-        this.list.addAll(list);
+        this.list = list;
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -44,17 +47,20 @@ public class CheckPrefAdapter extends ArrayAdapter<Prefecture> {
     /**
      * ViewHolder
      */
-   private class ViewHolder {
-        /** Checkbox*/
+    private class ViewHolder {
+        /**
+         * Checkbox
+         */
         CheckBox checkBox;
     }
 
 
     /**
      * getViewメソッド
-     * @param position リストの番号
+     *
+     * @param position    リストの番号
      * @param convertView リストのView情報
-     * @param parent 親のView
+     * @param parent      親のView
      * @return view view
      */
     @NonNull
@@ -62,7 +68,7 @@ public class CheckPrefAdapter extends ArrayAdapter<Prefecture> {
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         View view = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if (view == null) {
             view = layoutInflater.inflate(R.layout.check_item_list, null);
@@ -70,15 +76,6 @@ public class CheckPrefAdapter extends ArrayAdapter<Prefecture> {
             holder = new ViewHolder();
             holder.checkBox = (CheckBox) view.findViewById(R.id.checkbox_id);
             view.setTag(holder);
-
-            holder.checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    CheckBox cb = (CheckBox) view;
-                    Prefecture pref = (Prefecture) cb.getTag();
-                    pref.setSelected(cb.isChecked());
-                }
-            });
 
         } else {
             holder = (ViewHolder) view.getTag();
@@ -88,6 +85,16 @@ public class CheckPrefAdapter extends ArrayAdapter<Prefecture> {
         holder.checkBox.setChecked(pref.isSelected());
         holder.checkBox.setText(pref.getPrefName());
         holder.checkBox.setTag(pref);
+
+        // CheckBox押下時の処理
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckBox cb = (CheckBox) view;
+                Prefecture pref = (Prefecture) cb.getTag();
+                pref.setSelected(cb.isChecked());
+            }
+        });
 
         return view;
     }

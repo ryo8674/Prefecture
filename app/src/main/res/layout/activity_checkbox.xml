@@ -4,24 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-
-        <ListView
-            android:id="@+id/list_view2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="40dp" />
-    </LinearLayout>
+        android:layout_marginBottom="40dp"
+        android:choiceMode="multipleChoice" />
 
     <Button
-        android:id="@+id/button_ok2"
+        android:id="@+id/button_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="OK" />
+        android:text="@string/OK" />
 
 </RelativeLayout>

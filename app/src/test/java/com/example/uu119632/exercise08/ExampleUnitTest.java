@@ -1,4 +1,4 @@
-package com.example.peter.prefectures;
+package com.example.uu119632.exercise08;
 
 import org.junit.Test;
 

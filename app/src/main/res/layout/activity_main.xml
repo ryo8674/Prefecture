@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.peter.prefecture.MainActivity">
+    tools:context="com.example.uu119632.exercise08.MainActivity">
 
     <Button
         android:id="@+id/button_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="checkbox"/>
+        android:text="@string/check_box"/>
 
     <Button
         android:id="@+id/button_radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="radio button"/>
+        android:text="@string/radio_button"/>
 
 </LinearLayout>
